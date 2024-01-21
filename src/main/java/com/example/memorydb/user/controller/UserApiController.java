@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -48,5 +49,11 @@ public class UserApiController {
         userService.delete(userId);
     }
 
-
+    // score가 minScore 이상인 사용자의 정보를 찾아주는 method
+    @GetMapping("/find/over")
+    public List<UserEntity> findOver(
+            @RequestParam Long minScore // 파라미터로 받기
+    ) {
+        return userService.findOver(minScore);
+    }
 }

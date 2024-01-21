@@ -4,6 +4,7 @@ import com.example.memorydb.user.db.UserRepository;
 import com.example.memorydb.user.model.UserEntity;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,10 @@ public class UserService {
 
     public void delete(Long id) {
         userRepository.delete(id);
+    }
+
+    // user의 score가 minScore 이상인 사용자의 정보를 찾아주는 method
+    public List<UserEntity> findOver(Long minScore) {
+        return userRepository.findOver(minScore);
     }
 }
