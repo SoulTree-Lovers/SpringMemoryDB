@@ -36,21 +36,17 @@ public abstract class SimpleDataRepository<T extends Entity, ID extends Long> im
 
         if (prevData.isPresent()) {
             // 기존 데이터가 있는 경우
-            dataList.remove(prevData);
+            // prevData: Optional<UserEntity> 타입이라 .get()을 붙여야 UserEntity를 꺼낼 수 있음.
+            dataList.remove(prevData.get());
             dataList.add(data);
         } else {
             // 기존 데이터가 없는 경우
             index++;
             data.setId(index);
             dataList.add(data);
-
         }
 
-        // unique id
-        data.setId(index);
-        dataList.add(data);
-        index++;
-        return null;
+        return data;
     }
 
     // Read
@@ -81,7 +77,7 @@ public abstract class SimpleDataRepository<T extends Entity, ID extends Long> im
                 .findFirst();
 
         if (deleteEntity.isPresent()) {
-            dataList.remove(deleteEntity);
+            dataList.remove(deleteEntity.get());
         }
     }
 }
