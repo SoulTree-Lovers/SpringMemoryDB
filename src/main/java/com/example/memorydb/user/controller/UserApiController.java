@@ -36,16 +36,16 @@ public class UserApiController {
 
     @GetMapping(path = "/find/{userId}")
     public Optional<UserEntity> findById(
-            @PathVariable String userId
+            @PathVariable Long userId
     ) {
-        return userService.findById(Long.valueOf(userId));
+        return userService.findById(userId);
     }
 
     @DeleteMapping("/delete/{userId}")
     public void delete(
-            @PathVariable String userId
+            @PathVariable Long userId
     ) {
-        userService.delete(Long.valueOf(userId));
+        userService.delete(userId);
     }
 
 
