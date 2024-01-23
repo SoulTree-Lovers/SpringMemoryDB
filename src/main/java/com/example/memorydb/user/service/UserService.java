@@ -40,6 +40,9 @@ public class UserService {
     // user의 score가 minScore 이상이고 maxScore 이하인 사용자의 정보를 찾아주는 method
     public List<UserEntity> findMinMax(int minScore, int maxScore) {
 //        return null;
-        return userRepository.findAllByScoreGreaterThanEqualAndScoreLessThanEqual(minScore, maxScore);
+//        return userRepository.findAllByScoreGreaterThanEqualAndScoreLessThanEqual(minScore, maxScore);
+//        return userRepository.scoreJpql(minScore, maxScore);
+//        return userRepository.scoreNativeSql(minScore, maxScore);
+        return userRepository.scoreNativeSqlParam(minScore, maxScore);
     }
 }
