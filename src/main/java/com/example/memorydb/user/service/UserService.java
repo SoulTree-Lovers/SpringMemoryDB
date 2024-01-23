@@ -32,8 +32,14 @@ public class UserService {
     }
 
     // user의 score가 minScore 이상인 사용자의 정보를 찾아주는 method
-    public List<UserEntity> findOver(Long minScore) {
-        return null;
-//        return userRepository.findOver(minScore);
+    public List<UserEntity> findOver(int minScore) {
+//        return null;
+        return userRepository.findAllByScoreGreaterThanEqual(minScore);
+    }
+
+    // user의 score가 minScore 이상이고 maxScore 이하인 사용자의 정보를 찾아주는 method
+    public List<UserEntity> findMinMax(int minScore, int maxScore) {
+//        return null;
+        return userRepository.findAllByScoreGreaterThanEqualAndScoreLessThanEqual(minScore, maxScore);
     }
 }

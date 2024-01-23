@@ -52,8 +52,17 @@ public class UserApiController {
     // score가 minScore 이상인 사용자의 정보를 찾아주는 method
     @GetMapping("/find/over")
     public List<UserEntity> findOver(
-            @RequestParam Long minScore // 파라미터로 받기
+            @RequestParam int minScore // 파라미터로 받기
     ) {
         return userService.findOver(minScore);
+    }
+
+    // score가 minScore 이상인 사용자의 정보를 찾아주는 method
+    @GetMapping("/find/min_max")
+    public List<UserEntity> findMinMax(
+            @RequestParam int minScore, // 파라미터로 받기
+            @RequestParam int maxScore // 파라미터로 받기
+    ) {
+        return userService.findMinMax(minScore, maxScore);
     }
 }
