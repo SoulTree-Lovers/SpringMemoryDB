@@ -27,12 +27,13 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public void delete(Long id) {
+    public void delete(UserEntity id) {
         userRepository.delete(id);
     }
 
     // user의 score가 minScore 이상인 사용자의 정보를 찾아주는 method
     public List<UserEntity> findOver(Long minScore) {
-        return userRepository.findOver(minScore);
+        return null;
+//        return userRepository.findOver(minScore);
     }
 }

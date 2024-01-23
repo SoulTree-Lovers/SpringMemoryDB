@@ -46,7 +46,7 @@ public class UserApiController {
     public void delete(
             @PathVariable Long userId
     ) {
-        userService.delete(userId);
+//        userService.delete(userId);
     }
 
     // score가 minScore 이상인 사용자의 정보를 찾아주는 method
